@@ -36,7 +36,7 @@ Compare the masked data between the source DB (dmdb) and the mounted masked copy
 
 ### Important details to be aware of
 
-1)  The BAT file only runs when these are all set:   "%ACT_MULTI_OPNAME%" == "scrub-mount" if "%ACT_MULTI_END%" == "true" if "%ACT_PHASE%" == "post" 
+1)  The masking.sh file only runs when these are all set:   "%ACT_MULTI_OPNAME%" == "scrub-mount" if "%ACT_MULTI_END%" == "true" if "%ACT_PHASE%" == "post" 
 
 This ensures the script only runs after all parts of the prep-mount are complete including mounting of logs and starting of prepmounted Database.
 
