@@ -40,6 +40,6 @@ Compare the masked data between the source DB (dmdb) and the mounted masked copy
 
 This ensures the script only runs after all parts of the prep-mount are complete including mounting of logs and starting of prepmounted Database.
 
-### Manual test of bat file
+### Manual test of launcher file
 
-You can run the bat file with a parameter of 'test' to do a manual set of masking.
+You can run the launchs.h file with a parameter of 'test' to do a manual set of masking.
