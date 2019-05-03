@@ -13,7 +13,7 @@ The workflow needs to ensure the prep-mounted DB has that name or the SQL script
 3)  The workflow calls the launcher.sh as a post mount task (after the prepmount). This starts a second .sh file called masking.sh that runs SQL commands placed in maskscript.sql
 If the SQL fails the prep-mount fails.
 4)  Once the masking is complete, the prep-mount is unmounted and the liveclone is now in a masked state.
-5)  The masked liveClone is now mounted to the target host as maskedsmalldb by the workflow.
+5)  The masked liveClone is now mounted to the target host as maskdmdb by the workflow.
 
 This means the workflow needs to be setup as follows:
 
@@ -22,7 +22,7 @@ This means the workflow needs to be setup as follows:
 * Mount for Pre-Processing:  On
 * Post-Script:  launcher.sh   (or whatever the .sh file is called)
 * Create New Virtual Application:  On
-* SQL Server Database Name:  Should match the DB name in the masking.sh script  
+* Oracle Database Name (SID):  Should match the DB name in the masking.sh script  
 
 On the next panel you can set it up any way you like,  if the database is called dmdb, then ideally use this:
 
@@ -42,10 +42,10 @@ This ensures the script only runs after all parts of the prep-mount are complete
 
 ### Manual test of launcher file
 
-You can run the launchs.h file with a parameter of 'test' to do a manual set of masking.
+You can run the launcher.sh file with a parameter of 'test' to do a manual set of masking.
 
 
 ### What is camolauncher.sh ?
 
 These scripts can be used to run any masking software that can be automated.
-So camolauncher.sh is exactly the same as launcher.sh exact that in stead of running a shell script that does shell script masking, it instead start Camouflage software to do masking instead.   Note this calls for a file called /home/oracle/Mask-Demo.camo    This file would be created when you set up your masking routine with Camouflage.
+So camolauncher.sh is exactly the same as launcher.sh exact that instead of running a shell script that does shell script masking, it instead starts Camouflage software to do masking instead.   Note this calls for a file called /home/oracle/Mask-Demo.camo    This file would be created when you set up your masking routine with Camouflage.
