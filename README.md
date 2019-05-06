@@ -44,8 +44,13 @@ This ensures the script only runs after all parts of the prep-mount are complete
 
 You can run the launcher.sh file with a parameter of 'test' to do a manual set of masking.
 
+### Other Software Launcher files
+The point of this GIT repository is to share a framework that lets you test masking without masking software.  In addition are some working examples of scripts that run masking software.   These scripts are not complete in that the setup of the masking software is not described.
 
-### What is camolauncher.sh ?
+#### What is camolauncher.sh ?
 
-These scripts can be used to run any masking software that can be automated.
-So camolauncher.sh is exactly the same as launcher.sh exact that instead of running a shell script that does shell script masking, it instead starts Camouflage software to do masking instead.   Note this calls for a file called /home/oracle/Mask-Demo.camo    This file would be created when you set up your masking routine with Camouflage.
+So camolauncher.sh is exactly the same as launcher.sh except that instead of running a shell script that does shell script masking, it instead starts Camouflage software to do masking instead.   Note this calls for a file called /home/oracle/Mask-Demo.camo    This file would be created when you set up your masking routine with Camouflage.
+
+#### What is optimlauncher.sh ?
+
+So optimlauncher.sh s exactly the same as launcher.sh except that instead of running a shell script that does shell script masking, it instead starts IBM Optim software to do masking instead, on a database called optimdb.  There are optim files called by the tasks being run by this script, that need to be created using Optim Software.
