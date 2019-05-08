@@ -1,6 +1,6 @@
 ### Introduction
 
-This script is a simple example to show how masking can be automated using Scripts and Actifio.   
+This repository contains examples to show how masking can be automated using scripts and Actifio.   
 
 
 The sequence of events are intended for a liveclone workflow:
@@ -45,6 +45,7 @@ You can also run the launcher.sh file with a parameter of 'test' to do a manual 
 ### What is masking.sh
 
 Masking.sh is a simple and trivial masking script that can be used to demontrate masking without masking software.
+To use as a sample, simply modify the rows and columns that you want to change.
 
 ### Other Software Launcher files
 The point of this GIT repository is to share a framework that lets you test masking without masking software.  In addition are some working examples of scripts that run masking software.   These scripts are not complete in that the setup of the masking software is not described.
