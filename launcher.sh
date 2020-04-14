@@ -12,6 +12,13 @@ if [ "$ACT_MULTI_OPNAME" == "scrub-mount" ] && [ "$ACT_MULTI_END" == "true" ] &&
 	exit $?
 fi
 
+# if we are manually running the script remind the user how to test it
+if [ -z "$1" ]; then
+	echo "If you want to run this script as a test then please use the following command:"
+	echo "$0 test"
+fi
+
+
 # this lets us run this script manually 
 if [ "$1" == "test" ]; then
 	maskfunc
