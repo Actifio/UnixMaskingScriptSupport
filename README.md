@@ -19,7 +19,7 @@ This means the workflow needs to be setup as follows:
 * Mount for Pre-Processing:  On
 * Post-Script:  launcher.sh   (or whatever the .sh file is called)
 * Create New Virtual Application:  On
-* Oracle Database Name (SID):  Should match the DB name in the masking.sh script  
+* Oracle Database Name (SID):  Should match the DB name in the masking shell script  
 
 On the next panel you can set it up any way you like,  if the database is called dmdb, then ideally use this:
 
@@ -27,9 +27,14 @@ On the next panel you can set it up any way you like,  if the database is called
 * Prepmount DB name:   prepdmdb 
 * Final mount DB name: maskdmdb
 
+### App Aware Mount or Direct Mount Workflow
+
+You can also use this script on a regular App-Aware mount or a workflow that does a Direct App-Aware Mount.   No changes are needed to make this work about the usual customization of the shell script and SQL script.
+
+
 ### Validation of your sh script (e.g. launcher.sh)
 
-There are three things that need to be updated compared to the  sample script shared here:
+There are three things that need to be updated compared to the sample script shared here:
 
 * Is your ORACLE_SID the one called by workflow?  In this example it is called:  prepdmdb
 * Is your ORACLE_HOME correct?  In this example it is:  /home/oracle/app/oracle/product/12.2.0/dbhome_1
