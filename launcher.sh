@@ -11,11 +11,18 @@ maskfunc()
 su - oracle -c "cd /act/scripts;export ORACLE_SID=unmasked;export ORACLE_HOME=/home/oracle/app/oracle/product/12.2.0/dbhome_1;export PATH=$ORACLE_HOME/bin:$PATH;ORAENV_ASK=NO;sqlplus / as sysdba @/act/scripts/maskscript.sql;exit"
 }
 
-# this part of the script ensures we run the masking during a scrub mount after the database is started on the scrubbing server
+# this part of the script ensures we run the masking during a liveclone scrub mount after the database is started on the scrubbing server
 if [ "$ACT_MULTI_OPNAME" == "scrub-mount" ] && [ "$ACT_MULTI_END" == "true" ] && [ "$ACT_PHASE" == "post" ]; then
 	maskfunc
 	exit $?
 fi
+
+# this part of the script ensures we run the masking during a direct mount after the database is started on the target server
+if [ "$ACT_MULTI_OPNAME" == "mount" ] && [ "$ACT_MULTI_END" == "true" ] && [ "$ACT_PHASE" == "post" ]; then
+	maskfunc
+	exit $?
+fi
+
 
 # if the user is running this manually then tell them to use test
 if [ -z "$1" ] && [ -z "$ACT_PHASE" ]; then
