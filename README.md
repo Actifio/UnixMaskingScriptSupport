@@ -31,7 +31,7 @@ On the next panel you can set it up any way you like,  if the database is called
 
 There are three things that need to be updated compared to the  sample script shared here:
 
-* Is your ORACLE_SID the one called by workflow?  In this example it is called:  unmasked
+* Is your ORACLE_SID the one called by workflow?  In this example it is called:  prepdmdb
 * Is your ORACLE_HOME correct?  In this example it is:  /home/oracle/app/oracle/product/12.2.0/dbhome_1
 * Is the SQL script being called the correct one?   In this example it is called: maskscript.sql
 
