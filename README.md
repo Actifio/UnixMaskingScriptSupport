@@ -29,7 +29,7 @@ On the next panel you can set it up any way you like,  if the database is called
 
 ### App Aware Mount or Direct Mount Workflow
 
-You can also use this script on a regular App-Aware mount or a workflow that does a Direct App-Aware Mount.   No changes are needed to make this work about the usual customization of the shell script and SQL script.
+You can also use this script on a regular App-Aware mount or a workflow that does a Direct App-Aware Mount.   No changes are needed to make this work apart from the usual customization of the shell script and SQL script.
 
 
 ### Validation of your sh script (e.g. launcher.sh)
