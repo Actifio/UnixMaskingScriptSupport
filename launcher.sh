@@ -1,9 +1,14 @@
 #!/bin/bash
 
 # the line run in the  mask function can be substituted for your own masking software.   In this example it calls a SQL script
+# You need to validate all the variables
+# Is your ORACLE_SID the one called by workflow?  In this example it is called:  unmasked
+# Is your ORACLE_HOME correct?  In this example it is:  /home/oracle/app/oracle/product/12.2.0/dbhome_1
+# Is the SQL script being called the correct one?   In this example it is called: maskscript.sql
+
 maskfunc()
 {
-su -m oracle -c "/act/scripts/masking.sh"
+su - oracle -c "cd /act/scripts;export ORACLE_SID=unmasked;export ORACLE_HOME=/home/oracle/app/oracle/product/12.2.0/dbhome_1;export PATH=$ORACLE_HOME/bin:$PATH;ORAENV_ASK=NO;sqlplus / as sysdba @/act/scripts/maskscript.sql;exit"
 }
 
 # this part of the script ensures we run the masking during a scrub mount after the database is started on the scrubbing server
@@ -12,14 +17,13 @@ if [ "$ACT_MULTI_OPNAME" == "scrub-mount" ] && [ "$ACT_MULTI_END" == "true" ] &&
 	exit $?
 fi
 
-# if we are manually running the script remind the user how to test it
-if [ -z "$1" ]; then
-	echo "If you want to run this script as a test then please use the following command:"
-	echo "$0 test"
+# if the user is running this manually then tell them to use test
+if [ -z "$1" ] && [ -z "$ACT_PHASE" ]; then
+	echo "To run this script manually, use the following syntax:   $0 test"
+	exit 0
 fi
 
-
-# this lets us run this script manually 
+# this lets us run this script manually
 if [ "$1" == "test" ]; then
 	maskfunc
 	exit $?
