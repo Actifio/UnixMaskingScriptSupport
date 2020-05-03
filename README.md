@@ -3,13 +3,12 @@
 This repository contains examples to show how masking can be automated using scripts and Actifio.   
 
 
-The sequence of events are intended for a liveclone workflow:
+The sequence of events if used with a liveclone workflow:
 
 1)  A LiveClone of the source database is refreshed from the lastest snapshot
 2)  This LiveClone is prep-mounted to a masking host where the source database is prep-mounted as a new database with a different name
 The workflow needs to ensure the prep-mounted DB has that name or the launcher script will fail.
-3)  The workflow calls the launcher.sh as a post mount task (after the prepmount). This starts a second script or process.
-If that script o process fails the prep-mount fails.
+3)  The workflow calls the launcher.sh as a post mount task (after the prepmount). This script runs a SQL script.
 4)  Once the masking is complete, the prep-mount is unmounted and the liveclone is now in a masked state.
 5)  The masked liveClone is now mounted to the target host as a new database by the workflow.
 
@@ -28,6 +27,15 @@ On the next panel you can set it up any way you like,  if the database is called
 * Prepmount DB name:   prepdmdb 
 * Final mount DB name: maskdmdb
 
+### Validation of your sh script (e.g. launcher.sh)
+
+There are three things that need to be updated compared to the  sample script shared here:
+
+* Is your ORACLE_SID the one called by workflow?  In this example it is called:  unmasked
+* Is your ORACLE_HOME correct?  In this example it is:  /home/oracle/app/oracle/product/12.2.0/dbhome_1
+* Is the SQL script being called the correct one?   In this example it is called: maskscript.sql
+
+
 ### Validation
 
 Compare the masked data between the source DB and the mounted masked copy .
@@ -40,12 +48,8 @@ This ensures the script only runs after all parts of the prep-mount are complete
 
 ### Manual test of launcher file
 
-You can also run the launcher.sh file with a parameter of 'test' to do a manual set of masking.
+You can run the launcher.sh file with a parameter of 'test' to do a manual set of masking.
 
-### What is masking.sh
-
-Masking.sh is a simple and trivial masking script that can be used to demontrate masking without masking software.
-To use as a sample, simply modify the rows and columns that you want to change.
 
 ### Other Software Launcher files
 The point of this GIT repository is to share a framework that lets you test masking without masking software.  In addition are some working examples of scripts that run masking software.   These scripts are not complete in that the setup of the masking software is not described.
