@@ -8,7 +8,7 @@
 
 maskfunc()
 {
-su - oracle -c "cd /act/scripts;export ORACLE_SID=prepdmdb;export ORACLE_HOME=/home/oracle/app/oracle/product/12.2.0/dbhome_1;export PATH=$ORACLE_HOME/bin:$PATH;ORAENV_ASK=NO;sqlplus / as sysdba @/act/scripts/maskscript.sql;exit"
+su - oracle -c 'cd /act/scripts;export ORACLE_SID=prepdmdb;export ORACLE_HOME=/home/oracle/app/oracle/product/12.2.0/dbhome_1;export PATH=$ORACLE_HOME/bin:$PATH;ORAENV_ASK=NO;sqlplus / as sysdba @/act/scripts/maskscript.sql;exit'
 }
 
 # this part of the script ensures we run the masking during a liveclone scrub mount after the database is started on the scrubbing server
