@@ -9,6 +9,7 @@
 if [ -z "$2" ]; then
 	echo "The $2 variable which defines the SQL script to be run was not passed to the script"
 	echo "In a workflow you need to put the SQL file name after the script name"
+	exit 1
 else
 	sqlscriptname=$(echo "$2")
 fi
