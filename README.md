@@ -36,9 +36,9 @@ You can also use this script on a regular App-Aware mount or a workflow that doe
 
 There are three things that need to be updated compared to the sample script shared here:
 
-* Is your ORACLE_SID the one called by workflow?  In this example it is called:  prepdmdb
-* Is your ORACLE_HOME correct?  In this example it is:  /home/oracle/app/oracle/product/12.2.0/dbhome_1
-* Is the SQL script being called the correct one?   In this example it is called: maskscript.sql
+* Is your ORACLE_SID the one called by workflow?  In this example it is called:  prepdmdb.  Note in launcher.sh it learns this automatically.
+* Is your ORACLE_HOME correct?  In this example it is:  /home/oracle/app/oracle/product/12.2.0/dbhome_1    Note in launcher.sh it learns this automatically.
+* Is the SQL script being called the correct one?   In this example it is called: maskscript.sql   Note in launcher.sh it expects this to be passed by the workflow.
 
 
 ### Validation
