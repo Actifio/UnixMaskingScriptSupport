@@ -5,6 +5,13 @@
 # ORACLE_HOME is learned from env variable orahome that exists only during certain parts of mount, but not manual test
 # sqlscriptname is learned by $2 passed to script during mount, but not manual test
 
+# test for testing
+if [ -z "$1" ]; then
+	echo "To test this script use this syntax:  $0 test xxxx.sql"
+	echo "Make sure you have exported orahome and databasesid variables as well"
+	exit 0
+fi
+
 #  if $2 is not set then the sql script name will be empty
 if [ -z "$2" ]; then
 	echo "The $2 variable which defines the SQL script to be run was not passed to the script"
@@ -33,13 +40,6 @@ fi
 if [ "$ACT_MULTI_OPNAME" == "mount" ] && [ "$ACT_MULTI_END" == "true" ] && [ "$ACT_PHASE" == "post" ]; then
 	maskfunc
 	exit $?
-fi
-
-
-# if the user is running this manually then tell them to use test
-if [ -z "$1" ] && [ -z "$ACT_PHASE" ]; then
-	echo "To run this script manually, use the following syntax:   $0 test"
-	exit 0
 fi
 
 # this lets us run this script manually
